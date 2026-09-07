@@ -1,0 +1,207 @@
+---
+const profile = [
+  {
+    label: "会社名",
+    value: "AN TAM合同会社",
+  },
+  {
+    label: "所在地",
+    value: "福岡市博多区博多駅前１４－２０－９０１\nライオンズステーションプラザ博多",
+  },
+  {
+    label: "設立",
+    value: "2023年10月27日（令和5年10月27日）",
+  },
+  {
+    label: "資本金",
+    value: "500万円",
+  },
+  {
+    label: "代表者",
+    value: "グエンティトゥホアイ",
+  },
+];
+
+const businesses = [
+  {
+    title: "携帯電話の販売・買取",
+    text: "スマートフォンや携帯電話の売買を行っています。",
+    icon: "phone",
+  },
+  {
+    title: "ビューティーサロンの運営",
+    text: "エステ、ネイルなどのサロンを経営しています。",
+    icon: "salon",
+  },
+  {
+    title: "建築工事",
+    text: "建築に関する工事を請け負っています。",
+    icon: "build",
+  },
+];
+---
+
+<section class="section company" id="company" aria-labelledby="company-title">
+  <div class="wrap company-head" data-reveal>
+    <p class="kicker">Company</p>
+    <h2 class="section-title" id="company-title">運営会社</h2>
+    <p class="section-lead">
+      BAN MAI SMART は、AN TAM合同会社が運営しています。
+    </p>
+  </div>
+
+  <div class="wrap company-panel" data-reveal>
+    <dl class="profile">
+      {profile.map((item) => (
+        <div class="profile-row">
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="business">
+      <p class="business-label">事業内容</p>
+      <ul class="business-list" data-reveal-stagger>
+        {businesses.map((item) => (
+          <li>
+            <span class="business-icon" aria-hidden="true">
+              {item.icon === "phone" && (
+                <svg class="icon" viewBox="0 0 24 24">
+                  <rect x="7" y="3.5" width="10" height="17" rx="2"></rect>
+                  <path d="M11 18.5h2"></path>
+                </svg>
+              )}
+              {item.icon === "salon" && (
+                <svg class="icon" viewBox="0 0 24 24">
+                  <circle cx="12" cy="8" r="3.2"></circle>
+                  <path d="M6.5 19c.8-3.2 3-5 5.5-5s4.7 1.8 5.5 5"></path>
+                </svg>
+              )}
+              {item.icon === "build" && (
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M4 20V9l8-5 8 5v11"></path>
+                  <path d="M10 20v-6h4v6"></path>
+                </svg>
+              )}
+            </span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .company {
+    background: var(--paper);
+  }
+
+  .company-head {
+    margin-bottom: 48px;
+  }
+
+  .company-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px 56px;
+    padding: 40px 40px 36px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+  }
+
+  .profile {
+    margin: 0;
+  }
+
+  .profile-row {
+    display: grid;
+    grid-template-columns: 5.5em 1fr;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .profile-row:first-child {
+    padding-top: 0;
+  }
+
+  dt {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--mute);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    white-space: pre-line;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .business-label {
+    margin-bottom: 18px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--mute);
+  }
+
+  .business-list {
+    display: grid;
+    gap: 18px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .business-list li {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .business-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--orange);
+  }
+
+  .business-list h3 {
+    font-family: var(--font-jp);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .business-list p {
+    margin-top: 4px;
+    color: var(--mute);
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  @media (max-width: 860px) {
+    .company-panel {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 28px 22px;
+    }
+
+    .profile-row {
+      grid-template-columns: 4.5em 1fr;
+      gap: 14px;
+    }
+  }
+</style>

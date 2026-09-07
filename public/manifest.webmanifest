@@ -1,0 +1,22 @@
+{
+  "name": "BAN MAI SMART",
+  "short_name": "BAN MAI SMART",
+  "description": "福岡市博多区・博多駅徒歩5分のスマートフォン専門店。iPhoneの販売・買取・修理。",
+  "lang": "ja",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#14110e",
+  "theme_color": "#14110e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}

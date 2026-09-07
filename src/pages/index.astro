@@ -1,17 +1,151 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Concept from "../components/Concept.astro";
+import Lineup from "../components/Lineup.astro";
+import Gallery from "../components/Gallery.astro";
+import Access from "../components/Access.astro";
+import Company from "../components/Company.astro";
+import Footer from "../components/Footer.astro";
+import {
+  company,
+  lineup,
+  ogImage,
+  siteDescription,
+  siteName,
+  siteTitle,
+  social,
+  store,
+} from "../data/site";
 
+const origin = Astro.site ?? Astro.url;
+const pageUrl = new URL(Astro.url.pathname, origin).href;
+const imageUrl = new URL(ogImage.path, origin).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${pageUrl}#website`,
+      name: siteName,
+      url: pageUrl,
+      inLanguage: "ja",
+      description: siteDescription,
+      publisher: { "@id": `${pageUrl}#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${pageUrl}#organization`,
+      name: company.legalName,
+      legalName: company.legalName,
+      foundingDate: company.foundingDate,
+      founder: {
+        "@type": "Person",
+        name: company.founder,
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressRegion: company.addressRegion,
+        addressLocality: company.addressLocality,
+        streetAddress: company.streetAddress,
+        addressCountry: company.addressCountry,
+      },
+      telephone: store.telephone,
+      sameAs: [social.facebook],
+    },
+    {
+      "@type": "MobilePhoneStore",
+      "@id": `${pageUrl}#store`,
+      name: store.name,
+      image: imageUrl,
+      url: pageUrl,
+      telephone: store.telephone,
+      sameAs: [social.facebook],
+      priceRange: store.priceRange,
+      currenciesAccepted: store.currenciesAccepted,
+      availableLanguage: store.availableLanguage,
+      areaServed: store.areaServed.map((name) => ({
+        "@type": "AdministrativeArea",
+        name,
+      })),
+      address: {
+        "@type": "PostalAddress",
+        postalCode: store.postalCode,
+        addressRegion: store.addressRegion,
+        addressLocality: store.addressLocality,
+        streetAddress: store.streetAddress,
+        addressCountry: store.addressCountry,
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ],
+        opens: store.opens,
+        closes: store.closes,
+      },
+      parentOrganization: { "@id": `${pageUrl}#organization` },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "取り扱いiPhone",
+        itemListElement: lineup.map((name, index) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Product",
+            name,
+            brand: { "@type": "Brand", name: "Apple" },
+            category: "Smartphone",
+          },
+          availability: "https://schema.org/InStoreOnly",
+          position: index + 1,
+        })),
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: siteTitle,
+      description: siteDescription,
+      inLanguage: "ja",
+      isPartOf: { "@id": `${pageUrl}#website` },
+      about: { "@id": `${pageUrl}#store` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "ホーム",
+          item: pageUrl,
+        },
+      ],
+    },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <Header />
+  <main id="main">
+    <Hero />
+    <Concept />
+    <Lineup />
+    <Gallery />
+    <Access />
+    <Company />
+  </main>
+  <Footer />
+</Layout>

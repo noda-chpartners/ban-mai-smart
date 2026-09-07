@@ -1,0 +1,235 @@
+---
+import { Image } from "astro:assets";
+import iphone17promax from "../assets/images/iphone-17-promax.jpg";
+import iphone17 from "../assets/images/iphone-17.jpg";
+import iphone16promax from "../assets/images/iphone-16-promax.jpg";
+import iphone15promax from "../assets/images/iphone-15-promax.jpg";
+import inventory from "../assets/images/inventory.jpg";
+
+const models = [
+  {
+    name: "17 Pro Max",
+    image: iphone17promax,
+    alt: "BAN MAI SMART 店頭の iPhone 17 Pro Max",
+    note: "Flagship",
+  },
+  {
+    name: "17 Pro",
+    image: iphone17,
+    alt: "BAN MAI SMART 店頭の iPhone 17 Pro",
+    note: "Pro",
+  },
+  {
+    name: "16 Pro Max",
+    image: iphone16promax,
+    alt: "BAN MAI SMART 店頭の iPhone 16 Pro Max",
+    note: "Pro Max",
+  },
+  {
+    name: "15 Pro Max",
+    image: iphone15promax,
+    alt: "BAN MAI SMART 店頭の iPhone 15 Pro Max",
+    note: "Pro Max",
+  },
+  {
+    name: "14 Pro Max",
+    image: inventory,
+    alt: "BAN MAI SMART 店頭に並ぶ iPhone 14 Pro Max などの在庫",
+    note: "Classic",
+  },
+];
+---
+
+<section class="lineup" id="lineup" aria-labelledby="lineup-title">
+  <div class="wrap lineup-head" data-reveal>
+    <p class="kicker">Lineup</p>
+    <div class="lineup-title-row">
+      <h2 class="section-title" id="lineup-title">取り扱い機種</h2>
+      <p class="section-lead">
+        iPhone 17 Pro Max、17 Pro、16 Pro Max、15 Pro Max、14 Pro Max を取り扱っています。在庫・価格・状態は端末ごとに異なりますので、ご来店またはお電話にてご確認ください。
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap-wide lineup-grid" data-reveal-stagger>
+    {models.map((model, index) => (
+      <article class:list={["model", index === 0 && "is-featured"]}>
+        <div class="model-visual">
+          <Image
+            src={model.image}
+            alt={model.alt}
+            widths={[400, 720, 1080]}
+            sizes={index === 0 ? "(max-width: 860px) 100vw, 50vw" : "(max-width: 860px) 100vw, 25vw"}
+            quality={76}
+          />
+        </div>
+        <div class="model-body">
+          <span>{model.note}</span>
+          <h3>iPhone {model.name}</h3>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="wrap lineup-cta" data-reveal>
+    <p>ご希望の機種がございましたら、まずは在庫をご確認ください。</p>
+    <a href="tel:08060568668">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
+      </svg>
+      080-6056-8668
+    </a>
+  </div>
+</section>
+
+<style>
+  .lineup {
+    padding: 120px 0;
+    color: var(--cream);
+    background: var(--ink);
+  }
+
+  .lineup .kicker {
+    color: var(--orange-soft);
+  }
+
+  .lineup .kicker::before {
+    background: var(--orange-soft);
+  }
+
+  .lineup .section-title {
+    color: var(--cream);
+  }
+
+  .lineup .section-lead {
+    color: var(--mute-dark);
+    margin-top: 0;
+  }
+
+  .lineup-title-row {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 380px);
+    gap: 40px;
+    align-items: end;
+  }
+
+  .lineup-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .model {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-soft);
+    min-height: 280px;
+  }
+
+  .is-featured {
+    grid-row: span 2;
+    min-height: 576px;
+  }
+
+  .model-visual {
+    position: absolute;
+    inset: 0;
+  }
+
+  .model-visual :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.1s var(--ease);
+  }
+
+  .model:hover .model-visual :global(img) {
+    transform: scale(1.06);
+  }
+
+  .model-body {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 22px 22px 20px;
+    background: linear-gradient(180deg, transparent, rgba(12, 9, 7, 0.78));
+  }
+
+  .model-body span {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dawn);
+  }
+
+  .model-body h3 {
+    margin-top: 6px;
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .lineup-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line-light);
+  }
+
+  .lineup-cta p {
+    color: var(--mute-dark);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .lineup-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-serif);
+    font-size: 22px;
+    letter-spacing: 0.08em;
+  }
+
+  .lineup-cta a:hover {
+    color: var(--orange-soft);
+  }
+
+  @media (max-width: 980px) {
+    .lineup-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .is-featured {
+      grid-column: span 2;
+      min-height: 420px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .lineup {
+      padding: 88px 0;
+    }
+
+    .lineup-title-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .lineup-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .is-featured,
+    .model {
+      grid-column: auto;
+      min-height: 360px;
+    }
+  }
+</style>

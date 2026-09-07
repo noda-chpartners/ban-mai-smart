@@ -1,0 +1,262 @@
+---
+const facts = [
+  {
+    label: "Address",
+    title: "福岡市博多区博多駅前",
+    body: "〒812-0011 博多駅前3-9-5\nチサンマンション第一博多 601・602",
+    icon: "pin",
+  },
+  {
+    label: "Access",
+    title: "博多駅 徒歩5分",
+    body: "博多駅から歩いてすぐ。6階の店舗です。",
+    icon: "train",
+  },
+  {
+    label: "Hours",
+    title: "10:00 – 20:00",
+    body: "平日・土日祝とも同じ時間。定休日はありません。",
+    icon: "clock",
+  },
+  {
+    label: "Seat",
+    title: "10席",
+    body: "待合と商談スペースをご用意しています。",
+    icon: "seat",
+  },
+];
+---
+
+<section class="section access" id="access" aria-labelledby="access-title">
+  <div class="wrap access-head" data-reveal>
+    <p class="kicker">Access</p>
+    <h2 class="section-title" id="access-title">店舗案内</h2>
+  </div>
+
+  <div class="wrap access-grid">
+    <div class="facts" data-reveal-stagger>
+      {facts.map((fact) => (
+        <article class="fact">
+          <span class="fact-icon" aria-hidden="true">
+            {fact.icon === "pin" && (
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M12 21s7-6.2 7-11.2A7 7 0 0 0 5 9.8C5 14.8 12 21 12 21Z"></path>
+                <circle cx="12" cy="9.8" r="2.2"></circle>
+              </svg>
+            )}
+            {fact.icon === "train" && (
+              <svg class="icon" viewBox="0 0 24 24">
+                <rect x="6" y="4" width="12" height="14" rx="2"></rect>
+                <path d="M6 12h12M9 20l1.5-2h3L15 20"></path>
+              </svg>
+            )}
+            {fact.icon === "clock" && (
+              <svg class="icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M12 8v4.4l2.6 1.6"></path>
+              </svg>
+            )}
+            {fact.icon === "seat" && (
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M6 10.5V7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v3.5"></path>
+                <path d="M4 13.5h16v3H4z"></path>
+                <path d="M7 16.5v3M17 16.5v3"></path>
+              </svg>
+            )}
+          </span>
+          <p class="fact-label">{fact.label}</p>
+          <h3>{fact.title}</h3>
+          <p class="fact-body">{fact.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="map-block" data-reveal>
+      <iframe
+        title="BAN MAI SMART の地図"
+        src="https://maps.google.com/maps?q=812-0011%20%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E5%8D%9A%E5%A4%9A%E9%A7%85%E5%89%8D3-9-5%20%E3%83%81%E3%82%B5%E3%83%B3%E3%83%9E%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%B3%E7%AC%AC%E4%B8%80%E5%8D%9A%E5%A4%9A&output=embed&z=16"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+      <a
+        class="map-link"
+        href="https://maps.google.com/?q=812-0011+福岡市博多区博多駅前3-9-5+チサンマンション第一博多"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google マップで開く
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 17 17 7"></path>
+          <path d="M9 7h8v8"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="wrap cta-inner" data-reveal>
+      <p class="cta-kicker">Contact</p>
+      <p class="cta-copy">ご予約・在庫確認は、お気軽にどうぞ。</p>
+      <a class="cta-number" href="tel:08060568668">080-6056-8668</a>
+      <div class="cta-line" data-grow-line></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .access {
+    padding-bottom: 0;
+    background: var(--paper);
+  }
+
+  .access-head {
+    margin-bottom: 48px;
+  }
+
+  .access-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 36px;
+    align-items: stretch;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .fact {
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+  }
+
+  .fact-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--orange);
+  }
+
+  .fact-label {
+    margin-top: 16px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .fact h3 {
+    margin-top: 8px;
+    font-family: var(--font-jp);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    white-space: pre-line;
+  }
+
+  .fact-body {
+    margin-top: 10px;
+    color: var(--mute);
+    font-size: 13px;
+    font-weight: 300;
+    white-space: pre-line;
+  }
+
+  .map-block {
+    position: relative;
+    min-height: 460px;
+    overflow: hidden;
+    background: var(--sand);
+  }
+
+  .map-block iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.25) contrast(1.05);
+  }
+
+  .map-link {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .cta-band {
+    margin-top: 88px;
+    padding: 88px 0 96px;
+    color: var(--cream);
+    background: var(--ink);
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-kicker {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--dawn);
+  }
+
+  .cta-copy {
+    margin-top: 16px;
+    font-family: var(--font-jp);
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    letter-spacing: 0.12em;
+  }
+
+  .cta-number {
+    display: inline-block;
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .cta-number:hover {
+    color: var(--orange-soft);
+  }
+
+  .cta-line {
+    width: min(220px, 50%);
+    height: 1px;
+    margin: 28px auto 0;
+    background: var(--orange);
+    transform-origin: center;
+  }
+
+  @media (max-width: 860px) {
+    .access-grid,
+    .facts {
+      grid-template-columns: 1fr;
+    }
+
+    .map-block {
+      min-height: 320px;
+    }
+
+    .cta-band {
+      margin-top: 64px;
+      padding: 72px 0 80px;
+    }
+  }
+</style>

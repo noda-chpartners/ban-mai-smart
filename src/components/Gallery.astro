@@ -1,0 +1,143 @@
+---
+import { Image } from "astro:assets";
+import storeInterior from "../assets/images/store-interior.jpg";
+import shelfDisplay from "../assets/images/shelf-display.jpg";
+import inventory from "../assets/images/inventory.jpg";
+import shelfBoxed from "../assets/images/shelf-boxed.jpg";
+---
+
+<section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+  <div class="wrap gallery-head" data-reveal>
+    <p class="kicker">Gallery</p>
+    <h2 class="section-title" id="gallery-title">店内の風景</h2>
+    <p class="section-lead">
+      待合スペースを備えた、小さな専門店です。実機を手に取りながら、次の一台を選んでいただけます。
+    </p>
+  </div>
+
+  <div class="wrap-wide gallery-grid">
+    <figure class="shot shot-a" data-reveal>
+      <div class="shot-mask" data-parallax>
+        <Image
+          src={storeInterior}
+          alt="BAN MAI SMART 博多店の待合ソファとオレンジの陳列棚"
+          widths={[640, 960, 1400]}
+          sizes="(max-width: 860px) 100vw, 58vw"
+          quality={76}
+        />
+      </div>
+      <figcaption>Lounge / Interior</figcaption>
+    </figure>
+    <figure class="shot shot-b" data-reveal>
+      <div class="shot-mask">
+        <Image
+          src={shelfDisplay}
+          alt="BAN MAI SMART 博多店のショーケースに並ぶスマートフォン"
+          widths={[480, 800]}
+          sizes="(max-width: 860px) 100vw, 38vw"
+          quality={74}
+        />
+      </div>
+      <figcaption>Display Case</figcaption>
+    </figure>
+    <figure class="shot shot-c" data-reveal>
+      <div class="shot-mask">
+        <Image
+          src={inventory}
+          alt="BAN MAI SMART 博多店に並ぶ iPhone の在庫"
+          widths={[480, 800]}
+          sizes="(max-width: 860px) 100vw, 38vw"
+          quality={74}
+        />
+      </div>
+      <figcaption>Inventory</figcaption>
+    </figure>
+    <figure class="shot shot-d" data-reveal>
+      <div class="shot-mask">
+        <Image
+          src={shelfBoxed}
+          alt="BAN MAI SMART 博多店の棚に整列したスマートフォン"
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 860px) 100vw, 58vw"
+          quality={74}
+        />
+      </div>
+      <figcaption>Collection</figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--cream);
+  }
+
+  .gallery-head {
+    margin-bottom: 56px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-areas:
+      "a b"
+      "c d";
+    gap: 16px;
+  }
+
+  .shot {
+    margin: 0;
+  }
+
+  .shot-a { grid-area: a; }
+  .shot-b { grid-area: b; }
+  .shot-c { grid-area: c; }
+  .shot-d { grid-area: d; }
+
+  .shot-mask {
+    overflow: hidden;
+    background: var(--sand);
+  }
+
+  .shot-a .shot-mask,
+  .shot-d .shot-mask {
+    aspect-ratio: 16 / 11;
+  }
+
+  .shot-b .shot-mask,
+  .shot-c .shot-mask {
+    aspect-ratio: 4 / 5;
+  }
+
+  .shot-mask :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    margin-top: 10px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  @media (max-width: 860px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "a"
+        "b"
+        "c"
+        "d";
+    }
+
+    .shot-b .shot-mask,
+    .shot-c .shot-mask,
+    .shot-a .shot-mask,
+    .shot-d .shot-mask {
+      aspect-ratio: 16 / 11;
+    }
+  }
+</style>

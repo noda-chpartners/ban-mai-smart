@@ -1,0 +1,235 @@
+---
+import { Image } from "astro:assets";
+import storeInterior from "../assets/images/store-interior.jpg";
+---
+
+<section class="hero" id="top">
+  <div class="hero-visual">
+    <Image
+      src={storeInterior}
+      alt="BAN MAI SMART 店内。オレンジの陳列棚と待合スペース"
+      widths={[720, 1080, 1440, 1920]}
+      sizes="100vw"
+      quality={78}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="hero-shade"></div>
+
+  <div class="hero-copy wrap-wide">
+    <p class="hero-kicker">Hakata / Fukuoka</p>
+    <h1 class="hero-title" aria-label="BAN MAI SMART">
+      <span class="word">BAN</span>
+      <span class="word">MAI</span>
+      <span class="word">SMART</span>
+    </h1>
+    <p class="hero-lead">朝の光のように、確かな一台を。</p>
+    <p class="hero-sub">福岡市博多区 / iPhoneの販売・買取・修理</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:08060568668">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
+        </svg>
+        在庫を確認する
+      </a>
+      <a class="btn-ghost" href="#lineup">取り扱い機種を見る</a>
+    </div>
+  </div>
+
+  <dl class="hero-meta">
+    <div>
+      <dt>Station</dt>
+      <dd>博多駅 徒歩5分</dd>
+    </div>
+    <div>
+      <dt>Hours</dt>
+      <dd>10:00 – 20:00</dd>
+    </div>
+    <div>
+      <dt>Holiday</dt>
+      <dd>年中無休</dd>
+    </div>
+    <div>
+      <dt>Seats</dt>
+      <dd>10席</dd>
+    </div>
+  </dl>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    color: var(--cream);
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-visual {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-visual :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
+  }
+
+  .hero-shade {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(12, 9, 7, 0.82) 0%, rgba(12, 9, 7, 0.42) 48%, rgba(12, 9, 7, 0.18) 100%),
+      linear-gradient(180deg, rgba(12, 9, 7, 0.28) 0%, rgba(12, 9, 7, 0.08) 36%, rgba(12, 9, 7, 0.72) 100%);
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100svh;
+    padding: 140px 0 168px;
+  }
+
+  .hero-kicker {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--dawn);
+  }
+
+  .hero-title {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.18em 0.32em;
+    margin-top: 18px;
+    overflow: hidden;
+    font-family: var(--font-serif);
+    font-size: clamp(3.4rem, 10vw, 8.4rem);
+    font-weight: 500;
+    line-height: 0.92;
+    letter-spacing: 0.04em;
+  }
+
+  .word {
+    display: block;
+  }
+
+  .hero-lead {
+    margin-top: 28px;
+    font-family: var(--font-jp);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 400;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-sub {
+    margin-top: 12px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    color: var(--mute-dark);
+  }
+
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    transition:
+      transform 0.3s var(--ease),
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+  }
+
+  .btn-primary {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .btn-ghost {
+    border: 1px solid rgba(246, 239, 230, 0.38);
+  }
+
+  .btn-primary:hover,
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost:hover {
+    border-color: #fff;
+  }
+
+  .hero-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: min(1400px, calc(100% - 40px));
+    margin-inline: auto;
+    border-top: 1px solid var(--line-light);
+  }
+
+  .hero-meta div {
+    padding: 20px 18px 22px;
+  }
+
+  .hero-meta div + div {
+    border-left: 1px solid var(--line-light);
+  }
+
+  .hero-meta dt {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-dark);
+  }
+
+  .hero-meta dd {
+    margin-top: 6px;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 720px) {
+    .hero-copy {
+      padding: 120px 0 220px;
+    }
+
+    .hero-meta {
+      width: min(1400px, calc(100% - 32px));
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-meta div:nth-child(3),
+    .hero-meta div:nth-child(4) {
+      border-top: 1px solid var(--line-light);
+    }
+
+    .hero-meta div:nth-child(odd) {
+      border-left: 0;
+    }
+  }
+</style>

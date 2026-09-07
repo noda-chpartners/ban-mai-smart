@@ -1,0 +1,216 @@
+---
+import { Image } from "astro:assets";
+import shelfOrange from "../assets/images/shelf-orange.jpg";
+import shelfBoxed from "../assets/images/shelf-boxed.jpg";
+---
+
+<section class="section concept" id="concept" aria-labelledby="concept-title">
+  <div class="wrap concept-grid">
+    <div class="concept-copy" data-reveal>
+      <p class="kicker">Concept</p>
+      <h2 class="section-title" id="concept-title">夜明けのように、<br />新しい一台を。</h2>
+      <p class="section-lead">
+        Ban Mai は、ベトナム語で「夜明け」。博多駅前に構えるスマートフォン専門店です。販売、買取、修理まで、店内でゆっくりとご相談いただけます。
+      </p>
+      <p class="concept-body">
+        最新の iPhone から、状態の良い中古端末まで。実機を手に取り、スタッフと話しながら選べる小さな店舗です。ベトナム語と日本語、どちらでもご案内します。
+      </p>
+    </div>
+
+    <div class="concept-visual">
+      <figure class="concept-photo concept-photo-main">
+        <div class="photo-mask" data-parallax>
+          <Image
+            src={shelfOrange}
+            alt="BAN MAI SMART 博多店のオレンジ陳列棚に並ぶスマートフォン"
+            widths={[480, 720, 1080]}
+            sizes="(max-width: 860px) 100vw, 46vw"
+            quality={75}
+          />
+        </div>
+        <figcaption>Store / Display</figcaption>
+      </figure>
+      <figure class="concept-photo concept-photo-sub">
+        <div class="photo-mask" data-parallax>
+          <Image
+            src={shelfBoxed}
+            alt="BAN MAI SMART 博多店のショーケースに並ぶスマートフォン"
+            widths={[360, 640, 900]}
+            sizes="(max-width: 860px) 70vw, 28vw"
+            quality={75}
+          />
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap services" data-reveal-stagger>
+    <article class="service">
+      <span class="service-no">01</span>
+      <svg class="icon service-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="7" y="3.5" width="10" height="17" rx="2"></rect>
+        <path d="M11 18.5h2"></path>
+      </svg>
+      <h3>販売</h3>
+      <p>店頭で実機をご確認いただけます。在庫は日々入れ替わるため、ご来店前のお電話が確実です。</p>
+    </article>
+    <article class="service">
+      <span class="service-no">02</span>
+      <svg class="icon service-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 8h16v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z"></path>
+        <path d="M8 8V6.5A4 4 0 0 1 16 6.5V8"></path>
+      </svg>
+      <h3>買取</h3>
+      <p>その場で査定し、スピーディーにお取引します。機種や状態に応じて、丁寧にご説明します。</p>
+    </article>
+    <article class="service">
+      <span class="service-no">03</span>
+      <svg class="icon service-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M14.7 6.3 17.7 9.3"></path>
+        <path d="m4 20 5.2-1.2L20 8a2.1 2.1 0 0 0 0-3l-1-1a2.1 2.1 0 0 0-3 0L8.2 14.8 4 20Z"></path>
+      </svg>
+      <h3>修理</h3>
+      <p>画面やバッテリーなど、日常の不調に対応します。まずは症状をお聞かせください。</p>
+    </article>
+  </div>
+</section>
+
+<style>
+  .concept {
+    background: var(--paper);
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 72px;
+    align-items: center;
+  }
+
+  .concept-body {
+    margin-top: 20px;
+    max-width: 36em;
+    color: var(--ink-soft);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .concept-visual {
+    position: relative;
+    min-height: 560px;
+  }
+
+  .concept-photo {
+    margin: 0;
+  }
+
+  .photo-mask {
+    overflow: hidden;
+  }
+
+  .photo-mask :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .concept-photo-main {
+    width: 78%;
+    margin-left: auto;
+  }
+
+  .concept-photo-main .photo-mask {
+    aspect-ratio: 4 / 5;
+  }
+
+  .concept-photo-main figcaption {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+    text-align: right;
+  }
+
+  .concept-photo-sub {
+    position: absolute;
+    left: 0;
+    bottom: 36px;
+    width: 46%;
+    box-shadow: 0 24px 50px rgba(20, 17, 14, 0.16);
+  }
+
+  .concept-photo-sub .photo-mask {
+    aspect-ratio: 4 / 3;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 96px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+  }
+
+  .service {
+    position: relative;
+    padding-right: 12px;
+  }
+
+  .service-no {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+  }
+
+  .service-icon {
+    margin: 22px 0 16px;
+    width: 24px;
+    height: 24px;
+    color: var(--ink);
+  }
+
+  .service h3 {
+    font-family: var(--font-jp);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
+
+  .service p {
+    margin-top: 12px;
+    color: var(--mute);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  @media (max-width: 860px) {
+    .concept-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .concept-visual {
+      min-height: 0;
+    }
+
+    .concept-photo-main {
+      width: 100%;
+    }
+
+    .concept-photo-sub {
+      position: static;
+      width: 78%;
+      margin-top: -48px;
+    }
+
+    .services {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      margin-top: 64px;
+    }
+  }
+</style>
