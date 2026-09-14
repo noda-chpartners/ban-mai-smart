@@ -27,7 +27,7 @@ const links = [
 
       <div class="header-actions">
         <a class="header-tel" href={store.telephoneHref}>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <svg class="header-action-icon" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
           </svg>
           <span>{store.telephoneDisplay}</span>
@@ -38,7 +38,7 @@ const links = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon name="simple-icons:facebook" aria-hidden="true" />
+          <Icon name="simple-icons:facebook" class="header-action-icon" aria-hidden="true" />
           <span>Facebook</span>
         </a>
       </div>
@@ -68,6 +68,7 @@ const links = [
     position: fixed;
     inset: 0 0 auto;
     z-index: 82;
+    overflow-x: clip;
     color: var(--cream);
     transition:
       background 0.4s var(--ease),
@@ -88,7 +89,7 @@ const links = [
     min-height: var(--header-h);
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 20px;
   }
 
   .logo {
@@ -154,15 +155,18 @@ const links = [
   .header-actions {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex: 0 0 auto;
   }
 
   .header-tel,
   .header-contact {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 8px 14px;
+    min-height: 36px;
+    padding: 0 14px;
     border: 1px solid currentColor;
     border-radius: 999px;
     font-size: 12px;
@@ -173,9 +177,22 @@ const links = [
       border-color 0.3s;
   }
 
+  .header-action-icon,
+  .header-actions :global(svg) {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+  }
+
+  .header-tel .header-action-icon {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
   .header-contact :global(svg) {
-    width: 14px;
-    height: 14px;
     fill: currentColor;
   }
 
@@ -229,11 +246,25 @@ const links = [
 
   @media (max-width: 1080px) {
     .header-inner {
-      width: min(1400px, calc(100% - 32px));
+      width: min(1400px, calc(100% - 24px));
+      gap: 10px;
     }
 
     .nav-desktop {
       display: none;
+    }
+
+    .header-actions {
+      margin-left: auto;
+      gap: 6px;
+    }
+
+    .header-tel,
+    .header-contact {
+      width: 36px;
+      height: 36px;
+      min-height: 36px;
+      padding: 0;
     }
 
     .header-tel span,
@@ -243,7 +274,29 @@ const links = [
 
     .nav-toggle {
       display: block;
-      margin-left: auto;
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-toggle span {
+      left: 10px;
+    }
+
+    .nav-toggle span:first-child {
+      top: 16px;
+    }
+
+    .nav-toggle span:last-child {
+      top: 24px;
+    }
+
+    .site-header.is-open .nav-toggle span:first-child,
+    .site-header.is-open .nav-toggle span:last-child {
+      top: 20px;
+    }
+
+    .logo-text {
+      letter-spacing: 0.16em;
     }
 
     .nav-mobile {
