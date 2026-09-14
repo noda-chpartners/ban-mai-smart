@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { social } from "../data/site";
+import { social, store } from "../data/site";
 ---
 
 <footer class="site-footer">
@@ -29,7 +29,23 @@ import { social } from "../data/site";
     <div>
       <p class="footer-label">Contact</p>
       <p>
-        <a href={social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a class="footer-contact-link" href={store.telephoneHref}>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
+          </svg>
+          {store.telephoneDisplay}
+        </a>
+      </p>
+      <p>
+        <a
+          class="footer-contact-link"
+          href={social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="simple-icons:facebook" aria-hidden="true" />
+          Facebookで問い合わせ
+        </a>
       </p>
       <p>10:00 – 20:00 / 年中無休</p>
     </div>
@@ -102,9 +118,32 @@ import { social } from "../data/site";
     line-height: 1.9;
   }
 
+  .footer-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cream);
+    border-bottom: 1px solid rgba(246, 239, 230, 0.28);
+  }
+
+  .footer-contact-link :global(svg),
+  .footer-contact-link .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .footer-contact-link :global(svg:not(.icon)) {
+    fill: currentColor;
+  }
+
   .footer-grid a:hover,
   .footer-bottom a:hover {
     color: var(--cream);
+  }
+
+  .footer-contact-link:hover {
+    color: var(--orange-soft);
+    border-bottom-color: var(--orange-soft);
   }
 
   .footer-bottom {

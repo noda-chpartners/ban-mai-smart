@@ -1,5 +1,6 @@
 ---
-import { social } from "../data/site";
+import { Icon } from "astro-icon/components";
+import { social, store } from "../data/site";
 
 const facts = [
   {
@@ -98,15 +99,24 @@ const facts = [
   <div class="cta-band">
     <div class="wrap cta-inner" data-reveal>
       <p class="cta-kicker">Contact</p>
-      <p class="cta-copy">ご予約・在庫確認は、Facebookからどうぞ。</p>
-      <a
-        class="cta-facebook"
-        href={social.facebook}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Facebook
-      </a>
+      <p class="cta-copy">ご予約・在庫確認は、お気軽にどうぞ。</p>
+      <div class="cta-actions">
+        <a
+          class="cta-action is-facebook"
+          href={social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon name="simple-icons:facebook" aria-hidden="true" />
+          Facebookで問い合わせ
+        </a>
+        <a class="cta-action is-phone" href={store.telephoneHref}>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
+          </svg>
+          {store.telephoneDisplay}
+        </a>
+      </div>
       <div class="cta-line" data-grow-line></div>
     </div>
   </div>
@@ -230,18 +240,58 @@ const facts = [
     letter-spacing: 0.12em;
   }
 
-  .cta-facebook {
-    display: inline-block;
-    margin-top: 22px;
-    font-family: var(--font-sans);
-    font-size: clamp(2rem, 6vw, 3.6rem);
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    line-height: 1;
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 32px;
   }
 
-  .cta-facebook:hover {
-    color: var(--orange-soft);
+  .cta-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    transition:
+      transform 0.3s var(--ease),
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+  }
+
+  .cta-action :global(svg) {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+  }
+
+  .cta-action.is-facebook :global(svg) {
+    fill: currentColor;
+  }
+
+  .cta-action.is-facebook {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .cta-action.is-phone {
+    border: 1px solid rgba(246, 239, 230, 0.42);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cta-action:hover {
+    transform: translateY(-2px);
+  }
+
+  .cta-action.is-phone:hover {
+    border-color: #fff;
+    color: #fff;
   }
 
   .cta-line {

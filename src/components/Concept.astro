@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { social } from "../data/site";
+import { social, store } from "../data/site";
 import shelfOrange from "../assets/images/shelf-orange.jpg";
 import shelfBoxed from "../assets/images/shelf-boxed.jpg";
 import screenRepairPrice from "../assets/images/line_oa_chat_260914_131219.jpg";
@@ -54,7 +54,7 @@ import screenRepairPrice from "../assets/images/line_oa_chat_260914_131219.jpg";
         <path d="M11 18.5h2"></path>
       </svg>
       <h3>販売</h3>
-      <p>店頭で実機をご確認いただけます。在庫は日々入れ替わるため、ご来店前のFacebookでのご連絡が確実です。</p>
+      <p>店頭で実機をご確認いただけます。在庫は日々入れ替わるため、ご来店前のFacebookまたはお電話でのご連絡が確実です。</p>
     </article>
     <article class="service">
       <span class="service-no">02</span>
@@ -101,6 +101,8 @@ import screenRepairPrice from "../assets/images/line_oa_chat_260914_131219.jpg";
     <p class="repair-note">
       掲載以外の機種や、バッテリー交換などもご相談ください。
       <a href={social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+      または
+      <a href={store.telephoneHref}>{store.telephoneDisplay}</a>
       からお気軽にどうぞ。
     </p>
   </div>

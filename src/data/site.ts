@@ -9,6 +9,7 @@ export const store = {
   name: siteName,
   telephoneDisplay: "080-6056-8668",
   telephone: "+81-80-6056-8668",
+  telephoneHref: "tel:08060568668",
   email: undefined as string | undefined,
   postalCode: "812-0011",
   addressRegion: "福岡県",
