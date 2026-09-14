@@ -1,5 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { social } from "../data/site";
 import storeInterior from "../assets/images/store-interior.jpg";
 ---
 
@@ -27,11 +29,14 @@ import storeInterior from "../assets/images/store-interior.jpg";
     <p class="hero-lead">朝の光のように、確かな一台を。</p>
     <p class="hero-sub">福岡市博多区 / iPhoneの販売・買取・修理</p>
     <div class="hero-cta">
-      <a class="btn-primary" href="tel:08060568668">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
-        </svg>
-        在庫を確認する
+      <a
+        class="btn-primary"
+        href={social.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="simple-icons:facebook" class="hero-contact-icon" aria-hidden="true" />
+        Facebookで在庫を確認する
       </a>
       <a class="btn-ghost" href="#lineup">取り扱い機種を見る</a>
     </div>
@@ -164,6 +169,12 @@ import storeInterior from "../assets/images/store-interior.jpg";
   .btn-primary {
     background: var(--orange);
     color: #fff;
+  }
+
+  .hero-cta :global(.hero-contact-icon) {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
   }
 
   .btn-ghost {

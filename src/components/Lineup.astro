@@ -1,5 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import { social } from "../data/site";
 import iphone17promax from "../assets/images/iphone-17-promax.jpg";
 import iphone17 from "../assets/images/iphone-17.jpg";
 import iphone16promax from "../assets/images/iphone-16-promax.jpg";
@@ -46,7 +48,7 @@ const models = [
     <div class="lineup-title-row">
       <h2 class="section-title" id="lineup-title">取り扱い機種</h2>
       <p class="section-lead">
-        iPhone 17 Pro Max、17 Pro、16 Pro Max、15 Pro Max、14 Pro Max を取り扱っています。在庫・価格・状態は端末ごとに異なりますので、ご来店またはお電話にてご確認ください。
+        iPhone 17 Pro Max、17 Pro、16 Pro Max、15 Pro Max、14 Pro Max を取り扱っています。在庫・価格・状態は端末ごとに異なりますので、ご来店またはFacebookにてご確認ください。
       </p>
     </div>
   </div>
@@ -73,11 +75,9 @@ const models = [
 
   <div class="wrap lineup-cta" data-reveal>
     <p>ご希望の機種がございましたら、まずは在庫をご確認ください。</p>
-    <a href="tel:08060568668">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
-      </svg>
-      080-6056-8668
+    <a href={social.facebook} target="_blank" rel="noopener noreferrer">
+      <Icon name="simple-icons:facebook" class="lineup-contact-icon" aria-hidden="true" />
+      Facebook
     </a>
   </div>
 </section>
@@ -195,6 +195,12 @@ const models = [
     font-family: var(--font-serif);
     font-size: 22px;
     letter-spacing: 0.08em;
+  }
+
+  .lineup-cta :global(.lineup-contact-icon) {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
   }
 
   .lineup-cta a:hover {

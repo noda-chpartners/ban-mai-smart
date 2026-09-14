@@ -1,4 +1,6 @@
 ---
+import { social } from "../data/site";
+
 const facts = [
   {
     label: "Address",
@@ -96,8 +98,15 @@ const facts = [
   <div class="cta-band">
     <div class="wrap cta-inner" data-reveal>
       <p class="cta-kicker">Contact</p>
-      <p class="cta-copy">ご予約・在庫確認は、お気軽にどうぞ。</p>
-      <a class="cta-number" href="tel:08060568668">080-6056-8668</a>
+      <p class="cta-copy">ご予約・在庫確認は、Facebookからどうぞ。</p>
+      <a
+        class="cta-facebook"
+        href={social.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Facebook
+      </a>
       <div class="cta-line" data-grow-line></div>
     </div>
   </div>
@@ -221,18 +230,17 @@ const facts = [
     letter-spacing: 0.12em;
   }
 
-  .cta-number {
+  .cta-facebook {
     display: inline-block;
     margin-top: 22px;
     font-family: var(--font-sans);
     font-size: clamp(2rem, 6vw, 3.6rem);
     font-weight: 400;
-    font-variant-numeric: tabular-nums;
     letter-spacing: 0.08em;
     line-height: 1;
   }
 
-  .cta-number:hover {
+  .cta-facebook:hover {
     color: var(--orange-soft);
   }
 

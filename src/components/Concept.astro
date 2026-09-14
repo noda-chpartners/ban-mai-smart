@@ -1,7 +1,9 @@
 ---
 import { Image } from "astro:assets";
+import { social } from "../data/site";
 import shelfOrange from "../assets/images/shelf-orange.jpg";
 import shelfBoxed from "../assets/images/shelf-boxed.jpg";
+import screenRepairPrice from "../assets/images/line_oa_chat_260914_131219.jpg";
 ---
 
 <section class="section concept" id="concept" aria-labelledby="concept-title">
@@ -52,7 +54,7 @@ import shelfBoxed from "../assets/images/shelf-boxed.jpg";
         <path d="M11 18.5h2"></path>
       </svg>
       <h3>販売</h3>
-      <p>店頭で実機をご確認いただけます。在庫は日々入れ替わるため、ご来店前のお電話が確実です。</p>
+      <p>店頭で実機をご確認いただけます。在庫は日々入れ替わるため、ご来店前のFacebookでのご連絡が確実です。</p>
     </article>
     <article class="service">
       <span class="service-no">02</span>
@@ -70,8 +72,37 @@ import shelfBoxed from "../assets/images/shelf-boxed.jpg";
         <path d="m4 20 5.2-1.2L20 8a2.1 2.1 0 0 0 0-3l-1-1a2.1 2.1 0 0 0-3 0L8.2 14.8 4 20Z"></path>
       </svg>
       <h3>修理</h3>
-      <p>画面やバッテリーなど、日常の不調に対応します。まずは症状をお聞かせください。</p>
+      <p>画面やバッテリーなど、日常の不調に対応します。画面交換は20〜30分。料金は機種ごとに異なります。</p>
+      <a class="service-link" href="#repair">料金表を見る</a>
     </article>
+  </div>
+
+  <div class="wrap repair-board" id="repair" data-reveal>
+    <div class="repair-head">
+      <p class="kicker">Repair</p>
+      <div class="repair-title-row">
+        <h3>iPhone画面交換</h3>
+        <p class="repair-time">交換時間 20〜30分</p>
+      </div>
+      <p class="repair-lead">
+        画面のひび割れや表示不良は、店頭でスピーディーに対応します。機種ごとの料金は下表をご確認ください。
+      </p>
+    </div>
+    <figure class="repair-price">
+      <Image
+        src={screenRepairPrice}
+        alt="iPhone画面交換の料金表。8シリーズから16シリーズまで、交換時間は20〜30分"
+        widths={[640, 900, 1200]}
+        sizes="(max-width: 860px) 100vw, 820px"
+        quality={88}
+      />
+      <figcaption>Price / Screen Replacement</figcaption>
+    </figure>
+    <p class="repair-note">
+      掲載以外の機種や、バッテリー交換などもご相談ください。
+      <a href={social.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
+      からお気軽にどうぞ。
+    </p>
   </div>
 </section>
 
@@ -187,6 +218,94 @@ import shelfBoxed from "../assets/images/shelf-boxed.jpg";
     font-weight: 300;
   }
 
+  .service-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+  }
+
+  .service-link:hover {
+    color: var(--orange-deep);
+  }
+
+  .repair-board {
+    margin-top: 56px;
+    padding: 40px 44px 36px;
+    border: 1px solid var(--line);
+    background: var(--cream);
+    scroll-margin-top: calc(var(--header-h) + 24px);
+  }
+
+  .repair-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-top: 18px;
+  }
+
+  .repair-title-row h3 {
+    font-family: var(--font-jp);
+    font-size: clamp(1.4rem, 3vw, 1.85rem);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+  }
+
+  .repair-time {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+  }
+
+  .repair-lead {
+    margin-top: 16px;
+    max-width: 42em;
+    color: var(--mute);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .repair-price {
+    width: min(820px, 100%);
+    margin: 28px auto 0;
+  }
+
+  .repair-price :global(img) {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    background: #fff6e8;
+  }
+
+  .repair-price figcaption {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mute);
+    text-align: right;
+  }
+
+  .repair-note {
+    margin-top: 22px;
+    color: var(--mute);
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .repair-note a {
+    color: var(--orange);
+    letter-spacing: 0.06em;
+  }
+
+  .repair-note a:hover {
+    color: var(--orange-deep);
+  }
+
   @media (max-width: 860px) {
     .concept-grid {
       grid-template-columns: 1fr;
@@ -211,6 +330,11 @@ import shelfBoxed from "../assets/images/shelf-boxed.jpg";
       grid-template-columns: 1fr;
       gap: 36px;
       margin-top: 64px;
+    }
+
+    .repair-board {
+      margin-top: 40px;
+      padding: 28px 20px 24px;
     }
   }
 </style>

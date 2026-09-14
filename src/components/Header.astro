@@ -1,4 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
+import { social } from "../data/site";
+
 const links = [
   { href: "#concept", label: "Concept", title: "コンセプト" },
   { href: "#lineup", label: "Lineup", title: "取り扱い機種" },
@@ -22,11 +25,14 @@ const links = [
         ))}
       </nav>
 
-      <a class="header-tel" href="tel:08060568668">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6.5 3.8h3.1l1.2 3.1-2 1.2a12.4 12.4 0 0 0 6.1 6.1l1.2-2 3.1 1.2v3.1c0 .9-.7 1.7-1.6 1.7C9.8 18.2 5.8 14.2 5.8 5.4c0-.9.8-1.6 1.7-1.6Z"></path>
-        </svg>
-        <span>080-6056-8668</span>
+      <a
+        class="header-contact"
+        href={social.facebook}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Icon name="simple-icons:facebook" aria-hidden="true" />
+        <span>Facebook</span>
       </a>
 
       <button
@@ -137,7 +143,7 @@ const links = [
     transform: scaleX(1);
   }
 
-  .header-tel {
+  .header-contact {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -152,7 +158,13 @@ const links = [
       border-color 0.3s;
   }
 
-  .header-tel:hover {
+  .header-contact :global(svg) {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .header-contact:hover {
     background: var(--orange);
     border-color: var(--orange);
     color: #fff;
@@ -208,7 +220,7 @@ const links = [
       display: none;
     }
 
-    .header-tel span {
+    .header-contact span {
       display: none;
     }
 
