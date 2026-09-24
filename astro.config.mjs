@@ -4,7 +4,7 @@ import icon from "astro-icon";
 import { defineConfig } from "astro/config";
 
 // 公開ドメインが決まったら SITE またはここの URL を更新してください。
-const site = process.env.SITE || "https://banmaismart.jp";
+const site = process.env.SITE || "https://ban-mai-smart.pages.dev";
 
 // https://astro.build/config
 export default defineConfig({
