@@ -81,6 +81,7 @@ const models = [
         Facebook
       </a>
       <a href={store.telephoneHref}>{store.telephoneDisplay}</a>
+      <a href={store.emailHref}>{store.email}</a>
     </div>
   </div>
 </section>
@@ -205,6 +206,11 @@ const models = [
     font-family: var(--font-serif);
     font-size: 22px;
     letter-spacing: 0.08em;
+  }
+
+  .lineup-cta a[href^="mailto:"] {
+    font-size: 16px;
+    letter-spacing: 0.02em;
   }
 
   .lineup-cta :global(.lineup-contact-icon) {

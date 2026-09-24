@@ -47,6 +47,15 @@ import { social, store } from "../data/site";
           Facebookで問い合わせ
         </a>
       </p>
+      <p>
+        <a class="footer-contact-link" href={store.emailHref}>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="13" rx="1.5"></rect>
+            <path d="m4 7 8 6 8-6"></path>
+          </svg>
+          {store.email}
+        </a>
+      </p>
       <p>10:00 – 20:00 / 年中無休</p>
     </div>
   </div>

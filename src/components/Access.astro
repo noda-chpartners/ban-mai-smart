@@ -116,6 +116,13 @@ const facts = [
           </svg>
           {store.telephoneDisplay}
         </a>
+        <a class="cta-action is-mail" href={store.emailHref}>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="13" rx="1.5"></rect>
+            <path d="m4 7 8 6 8-6"></path>
+          </svg>
+          {store.email}
+        </a>
       </div>
       <div class="cta-line" data-grow-line></div>
     </div>
@@ -280,16 +287,25 @@ const facts = [
     color: #fff;
   }
 
-  .cta-action.is-phone {
+  .cta-action.is-phone,
+  .cta-action.is-mail {
     border: 1px solid rgba(246, 239, 230, 0.42);
+  }
+
+  .cta-action.is-phone {
     font-variant-numeric: tabular-nums;
+  }
+
+  .cta-action.is-mail {
+    letter-spacing: 0.02em;
   }
 
   .cta-action:hover {
     transform: translateY(-2px);
   }
 
-  .cta-action.is-phone:hover {
+  .cta-action.is-phone:hover,
+  .cta-action.is-mail:hover {
     border-color: #fff;
     color: #fff;
   }
